@@ -1,5 +1,6 @@
-package Pages;
+package Pages.Opportunity;
 
+import Pages.Opportunity.AddOpportunity;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;

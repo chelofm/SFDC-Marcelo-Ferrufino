@@ -1,6 +1,6 @@
-package Pages;
+package Pages.Opportunity;
 
-import org.openqa.selenium.By;
+import Pages.LookupPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
@@ -65,12 +65,14 @@ public class AddOpportunity {
     public AddOpportunity selectAccount(String accountName){
         wait.until(ExpectedConditions.elementToBeClickable(accountLookup));
         accountLookup.click();
+        LookupPage accountLookup = new LookupPage(driver);
+        accountLookup.searchAccount(accountName);
         return this;
     }
 
-    public AddOpportunity clickSave(){
+    public OpportunityDetailsPage clickSave(){
         wait.until(ExpectedConditions.elementToBeClickable(saveBtn));
         saveBtn.click();
-        return this;
+        return new OpportunityDetailsPage(driver);
     }
 }
