@@ -1,5 +1,6 @@
 package Pages.Opportunity;
 
+import Pages.Common.CommonLocators;
 import Pages.LookupPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,7 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 /**
  * Created by Marcelo Ferrufino on 8/10/2015.
  */
-public class AddOpportunity {
+public class AddOpportunity extends CommonLocators{
     private WebDriver driver;
     private WebDriverWait wait;
 
@@ -33,10 +34,6 @@ public class AddOpportunity {
    @CacheLookup
    private WebElement accountLookup;
 
-    @FindBy(css = "input[name='save']")
-    @CacheLookup
-    private WebElement saveBtn;
-
     public AddOpportunity(WebDriver driver){
         this.driver = driver;
         wait = new WebDriverWait(driver, 15);
@@ -45,6 +42,7 @@ public class AddOpportunity {
 
     public AddOpportunity setOppName(String oppName){
         wait.until(ExpectedConditions.visibilityOf(oppNameTxt));
+        oppNameTxt.clear();
         oppNameTxt.sendKeys(oppName);
         return this;
     }

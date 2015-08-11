@@ -1,4 +1,4 @@
-package Pages.Opportunity;
+package Pages.Account;
 
 import Pages.Common.CommonLocators;
 import org.openqa.selenium.WebDriver;
@@ -7,22 +7,22 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
- * Created by Marcelo Ferrufino on 8/10/2015.
+ * Created by marcelo on 8/11/15.
  */
-public class OpportunitiesPage extends CommonLocators {
+public class AccountPage extends CommonLocators {
     private WebDriver driver;
     private WebDriverWait wait;
 
-    public OpportunitiesPage(WebDriver driver){
+    public AccountPage(WebDriver driver){
         this.driver = driver;
         wait = new WebDriverWait(driver, 15);
         PageFactory.initElements(driver, this);
     }
 
-    public AddOpportunity clickNewBtn(){
+    public AddAccount clickNewBtn(){
         wait.until(ExpectedConditions.elementToBeClickable(newBtn));
         newBtn.click();
-        return new AddOpportunity(driver);
+        return new AddAccount(driver);
     }
 
 }

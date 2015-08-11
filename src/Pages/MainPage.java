@@ -1,5 +1,6 @@
 package Pages;
 
+import Pages.Account.AccountPage;
 import Pages.Opportunity.OpportunitiesPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -24,6 +25,10 @@ public class MainPage {
     @CacheLookup
     private WebElement opportunitiesLink;
 
+    @FindBy(linkText = "Accounts")
+    @CacheLookup
+    private WebElement accountLink;
+
     public MainPage(WebDriver driver){
         this.driver = driver;
         wait = new WebDriverWait(driver, 15);
@@ -36,9 +41,15 @@ public class MainPage {
     }
 
     public OpportunitiesPage goToOpportuniesPage(){
-        wait.until(ExpectedConditions.visibilityOf(homeLink));
+        wait.until(ExpectedConditions.elementToBeClickable(opportunitiesLink));
         opportunitiesLink.click();
         return new OpportunitiesPage(driver);
+    }
+
+    public AccountPage goToAccountPage(){
+        wait.until(ExpectedConditions.elementToBeClickable(accountLink));
+        accountLink.click();
+        return new AccountPage(driver);
     }
 
 }
