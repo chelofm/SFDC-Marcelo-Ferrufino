@@ -1,6 +1,6 @@
 package Pages.Opportunity;
 
-import Pages.Common.CommonLocators;
+import Pages.Common.CommonLocatorsOperations;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -9,13 +9,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 /**
  * Created by Marcelo Ferrufino on 8/10/2015.
  */
-public class OpportunitiesPage extends CommonLocators {
-    private WebDriver driver;
-    private WebDriverWait wait;
+public class OpportunitiesPage extends CommonLocatorsOperations {
+//    private WebDriver driver;
+//    private WebDriverWait wait;
 
     public OpportunitiesPage(WebDriver driver){
-        this.driver = driver;
-        wait = new WebDriverWait(driver, 15);
+        super(driver);
+//        this.driver = driver;
+//        wait = new WebDriverWait(driver, 15);
         PageFactory.initElements(driver, this);
     }
 
@@ -24,5 +25,4 @@ public class OpportunitiesPage extends CommonLocators {
         newBtn.click();
         return new AddOpportunity(driver);
     }
-
 }

@@ -1,6 +1,6 @@
 package Pages.Opportunity;
 
-import Pages.Common.CommonLocators;
+import Pages.Common.CommonLocatorsOperations;
 import Pages.LookupPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,9 +14,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 /**
  * Created by Marcelo Ferrufino on 8/10/2015.
  */
-public class AddOpportunity extends CommonLocators{
-    private WebDriver driver;
-    private WebDriverWait wait;
+public class AddOpportunity extends CommonLocatorsOperations {
+//    private WebDriver driver;
+//    private WebDriverWait wait;
 
     @FindBy (css = "input#opp3")
     @CacheLookup
@@ -35,8 +35,9 @@ public class AddOpportunity extends CommonLocators{
    private WebElement accountLookup;
 
     public AddOpportunity(WebDriver driver){
-        this.driver = driver;
-        wait = new WebDriverWait(driver, 15);
+        super(driver);
+//        this.driver = driver;
+//        wait = new WebDriverWait(driver, 15);
         PageFactory.initElements(driver, this);
     }
 

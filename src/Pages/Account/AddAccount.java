@@ -1,6 +1,6 @@
 package Pages.Account;
 
-import Pages.Common.CommonLocators;
+import Pages.Common.CommonLocatorsOperations;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
@@ -12,19 +12,19 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 /**
  * Created by marcelo on 8/11/15.
  */
-public class AddAccount extends CommonLocators{
+public class AddAccount extends CommonLocatorsOperations {
 
-    private WebDriver driver;
-    private WebDriverWait wait;
+//    private WebDriver driver;
+//    private WebDriverWait wait;
 
     @FindBy(id = "acc2")
     @CacheLookup
     private WebElement accountNameTxt;
 
     public AddAccount(WebDriver driver){
-        this.driver = driver;
-        wait = new WebDriverWait(driver, 15);
-
+//        this.driver = driver;
+//        wait = new WebDriverWait(driver, 15);
+        super(driver);
         PageFactory.initElements(driver, this);
     }
 

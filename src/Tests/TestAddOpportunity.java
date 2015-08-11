@@ -1,12 +1,16 @@
 package Tests;
 
 import Pages.*;
+import Pages.Account.AccountDetailsPage;
 import Pages.Account.AccountPage;
 import Pages.Account.AddAccount;
 import Pages.Opportunity.AddOpportunity;
 import Pages.Opportunity.OpportunitiesPage;
 import Pages.Opportunity.OpportunityDetailsPage;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -18,7 +22,12 @@ public class TestAddOpportunity {
 
     private MainPage mainPage;
     private OpportunityDetailsPage oppDetails;
+    private AccountPage accountPage;
+
     private final String accountName = "SeleniumExam1";
+
+    private WebDriver driver;
+    private WebDriverWait wait;
 
     @BeforeClass
     public void setUp(){
@@ -30,7 +39,7 @@ public class TestAddOpportunity {
         mainPage = loginPage.clickLoginBtn();
 
         //Precondition 2 - Add Account
-        AccountPage accountPage = mainPage.goToAccountPage();
+        accountPage = mainPage.goToAccountPage();
         AddAccount addAccount = accountPage.clickNewBtn()
                                             .setAccountName(accountName);
         addAccount.clickSave();
@@ -55,8 +64,12 @@ public class TestAddOpportunity {
         Assert.assertEquals(oppDetails.getAccountName(), accountName);
     }
 
-    @AfterMethod
+    @AfterClass
     public void tearDown(){
-        OpportunitiesPage oppHomePage = oppDetails.clickDeleteBtn();
+        oppDetails.clickDeleteBtn();
+        AccountDetailsPage accountDetailsPage = accountPage.selectAccount(accountName);
+        accountDetailsPage.clickDeleteBtn();
+
+        oppDetails.getDriver().quit();
     }
 }
