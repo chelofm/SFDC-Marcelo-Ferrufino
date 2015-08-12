@@ -9,22 +9,19 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * Created by Marcelo Ferrufino on 8/10/2015.
  */
 public class AddOpportunity extends CommonLocatorsOperations {
-//    private WebDriver driver;
-//    private WebDriverWait wait;
 
     @FindBy (css = "input#opp3")
     @CacheLookup
     private WebElement oppNameTxt;
 
-    @FindBy( css = "a[href*='insertDate']")
+    @FindBy( css = "input#opp9")
     @CacheLookup
-    private WebElement dateLink;
+    private WebElement closeDateTxt;
 
    @FindBy( css = "select#opp11")
    @CacheLookup
@@ -36,8 +33,6 @@ public class AddOpportunity extends CommonLocatorsOperations {
 
     public AddOpportunity(WebDriver driver){
         super(driver);
-//        this.driver = driver;
-//        wait = new WebDriverWait(driver, 15);
         PageFactory.initElements(driver, this);
     }
 
@@ -48,9 +43,10 @@ public class AddOpportunity extends CommonLocatorsOperations {
         return this;
     }
 
-    public AddOpportunity setCloseDate(){
-        wait.until(ExpectedConditions.elementToBeClickable(dateLink));
-        dateLink.click();
+    public AddOpportunity setCloseDate(String closeDate){
+        wait.until(ExpectedConditions.visibilityOf(closeDateTxt));
+        closeDateTxt.clear();
+        closeDateTxt.sendKeys(closeDate);
         return this;
     }
 

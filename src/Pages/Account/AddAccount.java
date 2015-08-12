@@ -7,23 +7,17 @@ import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * Created by marcelo on 8/11/15.
  */
 public class AddAccount extends CommonLocatorsOperations {
 
-//    private WebDriver driver;
-//    private WebDriverWait wait;
-
     @FindBy(id = "acc2")
     @CacheLookup
     private WebElement accountNameTxt;
 
     public AddAccount(WebDriver driver){
-//        this.driver = driver;
-//        wait = new WebDriverWait(driver, 15);
         super(driver);
         PageFactory.initElements(driver, this);
     }
